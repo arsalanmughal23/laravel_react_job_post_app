@@ -38,7 +38,7 @@ export default function Login() {
         <form onSubmit={onSubmit}>
             <p className="mb-4">Please login to your account</p>
             
-            <FieldGroup errors={['Title is required']} customClasses="mb-4">
+            <FieldGroup customClasses="mb-4">
                 {/* <!--Email input--> */}
                 <TEInput
                     name="email"
@@ -52,7 +52,7 @@ export default function Login() {
             </FieldGroup>
             
             {/* <!--Password input--> */}
-            <FieldGroup errors={['Password is required']} customClasses="mb-4">
+            <FieldGroup customClasses="mb-4">
                 <TEInput
                     name="password"
                     labelID="password"

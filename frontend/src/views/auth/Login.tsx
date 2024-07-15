@@ -8,6 +8,7 @@ import FieldGroup from "../../components/FieldGroup"
 import { TEInput, TERipple } from "tw-elements-react"
 import { useRef } from "react"
 import axiosClient from "../../axios-client"
+import alertify from "alertifyjs"
 
 export default function Login() {
 
@@ -28,6 +29,8 @@ export default function Login() {
             .then(({data}) => {
                 dispatch(storeUser(data.data.user))
                 dispatch(storeToken(data.data.token))
+            }).catch(({response}) => {
+                alertify.error(response.data.message);
             })
     }
 

@@ -5,14 +5,20 @@ import constants from "../constants/constants";
 import Dropdown, { DropdownMenuItemPropsType } from "./Dropdown";
 import Navbar, { NavbarMenuItemPropsType } from "./Navbar";
 import axiosClient from "../axios-client";
+import alertify from "alertifyjs";
 
 export default function Header() {
 
     const dispatch = useDispatch();
 
     const logoutAction = () => {
-        axiosClient.post('/logout', )
-        dispatch(storeToken(null));
+        axiosClient.post('/logout')
+            .then(({data}) => {
+                dispatch(dispatch(storeToken(null)))
+                alertify.success(data.message);
+            }).catch(({response}) => {
+                alertify.error(response.data.message);
+            })
     }
 
     const topRightMenuList:DropdownMenuItemPropsType[] = [
